@@ -4,6 +4,13 @@ import pytest
 # Medhod name must be strarted with "test"
 
 a = 101
+actual_result = "Testing"
+
+@pytest.fixture()
+def fixture_code():
+    print("This is a fixture code, that will execute before test case")
+    print("----------------------------------------------------------")
+
 
 @pytest.mark.skipif(a>100, reason="Skipping as a>100")
 def test_tc_001_Login_Logout_Testing():
@@ -11,9 +18,10 @@ def test_tc_001_Login_Logout_Testing():
     print("This is the end of test case")
 
 @pytest.mark.smoke
-def test_tc_003_Login_Logout_Invalid_credentials():
+def test_tc_003_Login_Logout_Invalid_credentials(fixture_code):
     print("This is my third testcase (smoke)")
     print("This is end of testcase")
+    assert actual_result == "Testings"
 
 # TIPS:
 # Print display output on console   -s
