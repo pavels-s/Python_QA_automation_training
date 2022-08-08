@@ -1,0 +1,5 @@
+# Execute testcases with allure testing repost
+pytest --alluredir C:\Users\pavel\PycharmProjects\Python_QA_automation_training\reports  pytestLearning/testCases
+
+# Cmd command to generate reports in HTML
+allure serve C:\Users\pavel\PycharmProjects\Python_QA_automation_training\reports

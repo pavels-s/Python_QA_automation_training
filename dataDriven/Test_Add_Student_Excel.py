@@ -2,18 +2,19 @@ import json
 import jsonpath
 import requests
 import openpyxl
+from openpyxl import Workbook
 
 def test_and_multiply_students():
     # API code
     api_url = "https://thetestingworldapi.com/api/studentsDetails"
-    fileToOpen = open("C:/Users/2204524/PycharmProjects/Python_QA_automation_training/dataDriven/Add_Student.json")
+    fileToOpen = open("C:/Users/pavel/PycharmProjects/Python_QA_automation_training/dataDriven/Add_Student.json")
     json_request = json.loads(fileToOpen.read())
 
     # Open workbook - excel code
-    vk = openpyxl.load_workbook("C:/Users/2204524/PycharmProjects/Python_QA_automation_training/dataDriven/Add_Student.xlsx")
+    vk = openpyxl.load_workbook('C:/Users/pavel/PycharmProjects/Python_QA_automation_training/dataDriven/Add_student.xlsx')
     sh = vk('Sheet1')
 
-    # How much rows are in table
+    # How many rows are in table
     rows = sh.max_row
 
     # Starting loop from second row, as first is header
