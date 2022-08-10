@@ -1,0 +1,26 @@
+*** Settings ***
+Documentation  Documentation in settings
+Resource  ../Resources/FrontOfficeApp.robot
+Resource  ../Resources/CommonWeb.robot
+Test Setup  Begin Web Test
+Test Teardown  End Web Test
+
+# robot -d results tests/Front_Office.robot
+
+*** Variables ***
+${BROWSER} =  chrome
+${URL} =  http://www.robotframeworktutorial.com/front-office
+
+*** Test Cases ***
+Should be able to access "Team" page
+    [Documentation]  Documentation from test cases test1
+    [Tags]  Test1
+    FronOfficeApp.Go to Landing Page
+    FronOfficeApp.Go to Team Page
+
+"Team" page should match requirements
+    [Documentation]  Documentation from test cases test2
+    [Tags]  Test2
+    FrontOfficeApp.Go to Landing Page
+    FrontOfficeApp.Go to "Team" Page
+    FrontOfficeApp.Validate "team" Page
