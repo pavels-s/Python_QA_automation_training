@@ -1,7 +1,7 @@
 *** Settings ***
 Library  RequestsLibrary
 Library  Collections
-
+Library  JSONLibrary
 
 
 *** Variables ***
@@ -24,4 +24,14 @@ TC_001_Fetch_Students_Details_By_ID
     Should Be Equal    ${actual_status_code}  200
     Log To Console    ${response.content}
 
+    ${json_resp} =  to json  ${response.content}
 
+    @{first_name_list} =  Get Value From Json    ${json_resp}    data.first_name
+    ${first_name} =  Get From List    ${first_name_list}    0
+    Log To Console    ${first_name}
+    Should Be Equal    ${first_name}    Test1 Student
+
+    @{last_name_list} =  Get Value From Json    ${json_resp}    data.last_name
+    ${last_name} =  Get From List    ${last_name_list}    0
+    Log To Console    ${last_name}
+    Should Be Equal    ${Last_name}    Automation
